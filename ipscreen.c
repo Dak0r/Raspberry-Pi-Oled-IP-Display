@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
     char *ip;
     do{
         printf("Scanning for ip, try %i \n", as);
+        sleep(0.5f);
         //as = (as+1)%4;
         as = as +1;
         if(as >= 4){
@@ -41,7 +42,6 @@ int main(int argc, char *argv[])
         } 
         printStatus(as);
 	    ip = getIp ();
-        sleep(1);
     }while(strlen(ip) < 4);
     printf("printing ip to oled: \"%s\" \n", ip);
 
