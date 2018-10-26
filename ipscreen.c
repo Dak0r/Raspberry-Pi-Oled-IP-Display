@@ -44,9 +44,9 @@ int main(int argc, char *argv[])
 	    ip = getIp ();
     }while(strlen(ip) < 4);
     printf("printing ip to oled: \"%s\" \n", ip);
-     char *interface;
-     interface = getInterface();
-    printf("printing interface to wifi: \"%s\" \n", ip);
+    char *interface;
+    interface = getInterface();
+    printf("printing interface to wifi: \"%s\" \n", interface);
     ////int oledInit(int iChannel, int iAddr, int bFlip, int bInvert)
 
 	if (i == 0)
