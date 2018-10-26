@@ -46,12 +46,13 @@ int main(int argc, char *argv[])
     printf("printing ip to oled: \"%s\" \n", ip);
      char *interface;
      interface = getInterface();
+    printf("printing interface to wifi: \"%s\" \n", ip);
     ////int oledInit(int iChannel, int iAddr, int bFlip, int bInvert)
 
 	if (i == 0)
 	{
 		oledFill(0); // fill with black
-		oledWriteString(0,0,"IP Display:",FONT_NORMAL);
+		oledWriteString(0,0,"IP Display:", FONT_NORMAL);
 		/*oledWriteString(2,2,"BIG!",FONT_BIG);
 		oledWriteString(3,5,"Narrow Font (6x8)", FONT_SMALL);
 		for (i=0; i<64; i++)
