@@ -94,9 +94,9 @@ void printStatus(int as){
             break;
         default:
             oledWriteString(3,2,"*",FONT_BIG);
-    }
-    
+    }  
 }
+
 char* getInterface(){
     FILE *f;
     char line[100], *p, *c;
@@ -127,8 +127,6 @@ char* getInterface(){
 char* getIp(){
     FILE *f;
     char line[100], *p, *c;
-    
-
      
     f = fopen("/proc/net/route" , "r");
      
