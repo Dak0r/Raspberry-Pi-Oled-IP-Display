@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-sudo screen -S IPSCREEN -X quit
+screen -S IPSCREEN -X stuff "spawn daemon$(printf \\r)"
