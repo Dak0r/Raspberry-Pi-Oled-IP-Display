@@ -72,24 +72,24 @@ int main(int argc, char *argv[])
 void printStatus(int as){
     oledFill(0); // fill with black
 	oledWriteString(0,0,"IP Display: W",FONT_NORMAL);
-    char c = '/';
+
     switch(as){
         case 0:
-            c = '/';
+            oledWriteString(2,2,"/",FONT_BIG);
             break;
         case 1:
-            c = '-';
+            oledWriteString(2,2,"-",FONT_BIG);
             break;
         case 2:
-            c = '\\';
+            oledWriteString(2,2,"\\",FONT_BIG);
             break;
         case 3:
-            c = 'l';
+            oledWriteString(2,2,"|",FONT_BIG);
             break;
         default:
-            c = '*';
+            oledWriteString(2,2,"*",FONT_BIG);
     }
-    oledWriteString(2,2,&c,FONT_BIG);
+    
 }
 char* getIp(){
     FILE *f;
