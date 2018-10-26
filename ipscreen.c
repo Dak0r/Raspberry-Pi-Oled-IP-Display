@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
 		}*/
         oledWriteString(3,5, ip, FONT_SMALL);
 		printf("Press ENTER to quit\n");
+        printf("lengh: %d\n",strlen(ip));
 		getchar();
 		oledShutdown();
 	}
