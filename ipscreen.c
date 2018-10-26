@@ -44,8 +44,8 @@ int main(int argc, char *argv[])
 	    ip = getIp ();
     }while(strlen(ip) < 4);
     printf("printing ip to oled: \"%s\" \n", ip);
-
-
+     char *interface;
+     interface = getInterface();
     ////int oledInit(int iChannel, int iAddr, int bFlip, int bInvert)
 
 	if (i == 0)
@@ -59,6 +59,7 @@ int main(int argc, char *argv[])
 			oledSetPixel(i, 16+i, 1);
 			oledSetPixel(127-i, 16+i, 1);
 		}*/
+        oledWriteString(3,4, interface, FONT_SMALL);
         oledWriteString(3,5, ip, FONT_SMALL);
 		printf("Press ENTER to quit\n");
 		getchar();
@@ -66,34 +67,63 @@ int main(int argc, char *argv[])
 	}
 
     free(ip);
+    free(interface);
    return 0;
 } /* main() */
 
 void printStatus(int as){
-    oledFill(0); // fill with black
+    //oledFill(0); // fill with black
 	oledWriteString(0,0,"IP Display: W",FONT_NORMAL);
-
+    oledWriteString(1,2, "              ", FONT_BIG); // clear line
     switch(as){
         case 0:
-            oledWriteString(2,2,"/",FONT_BIG);
+            oledWriteString(3,2,"/",FONT_BIG);
             break;
         case 1:
-            oledWriteString(2,2,"-",FONT_BIG);
+            oledWriteString(3,2,"-",FONT_BIG);
             break;
         case 2:
-            oledWriteString(2,2,"\\",FONT_BIG);
+            oledWriteString(3,2,"\\",FONT_BIG);
             break;
         case 3:
-            oledWriteString(2,2,"|",FONT_BIG);
+            oledWriteString(3,2,"|",FONT_BIG);
             break;
         default:
-            oledWriteString(2,2,"*",FONT_BIG);
+            oledWriteString(3,2,"*",FONT_BIG);
     }
     
 }
+char* getInterface(){
+    FILE *f;
+    char line[100], *c;
+    char *p;
+	p = malloc (sizeof (char) * 100);
+     
+    f = fopen("/proc/net/route" , "r");
+     
+    while(fgets(line , 100 , f))
+    {
+        p = strtok(line , " \t");
+        c = strtok(NULL , " \t");
+         
+        if(p!=NULL && c!=NULL)
+        {
+            if(strcmp(c , "00000000") == 0)
+            {
+                printf("Default interface is : %s \n" , p);
+                break;
+            }
+        }
+    }
+     
+    return p;
+}
+
 char* getIp(){
     FILE *f;
-    char line[100] , *p , *c;
+    char line[100], *p, *c;
+    
+
      
     f = fopen("/proc/net/route" , "r");
      
