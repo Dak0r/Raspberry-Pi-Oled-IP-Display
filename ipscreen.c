@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
 		}*/
 
         printf("printing interface to wifi: \"%s\" \n", interface);
-        oledWriteString(3,4, interface, FONT_SMALL);
+        oledWriteString(3,3, interface, FONT_SMALL);
         oledWriteString(3,5, ip, FONT_SMALL);
 		printf("Press ENTER to quit\n");
 		getchar();
