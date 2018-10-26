@@ -21,7 +21,7 @@ extern unsigned char ucSmallFont[];
 
 int main(int argc, char *argv[])
 {
-   
+     int i;
      do{
 	    i=oledInit(1, 0x3c, 0, 0); // for Raspberry Pi, use channel 1
         sleep(0.5f);
@@ -33,14 +33,14 @@ int main(int argc, char *argv[])
 
     char *ip;
     do{
-        as = (++as)%4;
+        as = (as+1)%4;
         printStatus(as);
 	    ip = getIp ();
         sleep(0.5f);
     }while(strlen(ip) < 1);
     printf("printing ip to oled: %s", ip);
 
-    int i;
+
     ////int oledInit(int iChannel, int iAddr, int bFlip, int bInvert)
 
 	if (i == 0)
@@ -56,7 +56,6 @@ int main(int argc, char *argv[])
 		}*/
         oledWriteString(3,5, ip, FONT_SMALL);
 		printf("Press ENTER to quit\n");
-        printf("lengh: %d\n",strlen(ip));
 		getchar();
 		oledShutdown();
 	}
@@ -78,7 +77,7 @@ void printStatus(int as){
             c = '-';
             break;
         case 2:
-            c = '\';
+            c = '\\';
             break;
         case 3:
             c = '|';
@@ -86,7 +85,7 @@ void printStatus(int as){
         default:
             c = '*';
     }
-    oledWriteString(2,2,c,FONT_BIG);
+    oledWriteString(2,2,&c,FONT_BIG);
 }
 char* getIp(){
     FILE *f;
