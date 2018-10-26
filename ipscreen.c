@@ -21,12 +21,13 @@ extern unsigned char ucSmallFont[];
 
 int main(int argc, char *argv[])
 {
+
      int i;
      do{
 	    i=oledInit(1, 0x3c, 0, 0); // for Raspberry Pi, use channel 1
         sleep(0.5f);
     }while(i!=0);
-
+    oledFill(0); // fill with black
     printStatus(0);
 
     int as=0;
