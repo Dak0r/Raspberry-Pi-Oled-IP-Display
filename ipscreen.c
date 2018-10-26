@@ -60,6 +60,8 @@ int main(int argc, char *argv[])
 			oledSetPixel(i, 16+i, 1);
 			oledSetPixel(127-i, 16+i, 1);
 		}*/
+
+        printf("printing interface to wifi: \"%s\" \n", interface);
         oledWriteString(3,4, interface, FONT_SMALL);
         oledWriteString(3,5, ip, FONT_SMALL);
 		printf("Press ENTER to quit\n");
@@ -96,15 +98,16 @@ void printStatus(int as){
 }
 char* getInterface(){
     FILE *f;
-    char line[100], *c;
-    char *p;
-	p = malloc (sizeof (char) * 100);
+    char line[100], *p, *c;
+    char *inter;
+	inter = malloc (sizeof (char) * 100);
      
     f = fopen("/proc/net/route" , "r");
      
     while(fgets(line , 100 , f))
     {
         p = strtok(line , " \t");
+        strcpy(inter, p);
         c = strtok(NULL , " \t");
          
         if(p!=NULL && c!=NULL)
@@ -117,7 +120,7 @@ char* getInterface(){
         }
     }
      
-    return p;
+    return inter;
 }
 
 char* getIp(){
