@@ -34,7 +34,11 @@ int main(int argc, char *argv[])
     char *ip;
     do{
         printf("Scanning for ip, try %i \n", as);
-        as = (as+1)%4;
+        //as = (as+1)%4;
+        as = as +1;
+        if(as >= 4){
+            as = 0;
+        } 
         printStatus(as);
 	    ip = getIp ();
         sleep(1);
@@ -66,7 +70,6 @@ int main(int argc, char *argv[])
 } /* main() */
 
 void printStatus(int as){
-    as = as%4;
     oledFill(0); // fill with black
 	oledWriteString(0,0,"IP Display: W",FONT_NORMAL);
     char c = '/';
