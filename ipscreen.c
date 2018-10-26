@@ -81,7 +81,7 @@ void printStatus(int as){
             c = '\\';
             break;
         case 3:
-            c = '|';
+            c = 'l';
             break;
         default:
             c = '*';
