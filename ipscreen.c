@@ -24,12 +24,14 @@ int main(int argc, char *argv[])
 
 
     char *ip;
-	ip = getIp ();
+	//ip = getIp ();
     printf("printing ip to oled: %s", ip);
 
-        int i;
+    int i;
     ////int oledInit(int iChannel, int iAddr, int bFlip, int bInvert)
+    do{
 	i=oledInit(1, 0x3c, 0, 0); // for Raspberry Pi, use channel 1
+    }while(i!=0);
 	if (i == 0)
 	{
 		oledFill(0); // fill with black
@@ -41,7 +43,7 @@ int main(int argc, char *argv[])
 			oledSetPixel(i, 16+i, 1);
 			oledSetPixel(127-i, 16+i, 1);
 		}*/
-        oledWriteString(3,5, ip, FONT_SMALL);
+        oledWriteString(3,5, argv[1], FONT_SMALL);
 		printf("Press ENTER to quit\n");
 		getchar();
 		oledShutdown();
