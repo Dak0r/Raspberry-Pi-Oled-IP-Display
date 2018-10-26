@@ -13,8 +13,8 @@ extern unsigned char ucSmallFont[];
 int main(int argc, char *argv[])
 {
 int i;
-
-	i=oledInit(1, 0x3c, 1, 1); // for Raspberry Pi, use channel 1
+    ////int oledInit(int iChannel, int iAddr, int bFlip, int bInvert)
+	i=oledInit(1, 0x3c, 0, 0); // for Raspberry Pi, use channel 1
 	if (i == 0)
 	{
 		oledFill(0); // fill with black
