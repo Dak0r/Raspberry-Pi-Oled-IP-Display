@@ -33,12 +33,13 @@ int main(int argc, char *argv[])
 
     char *ip;
     do{
+        printf("Scanning for ip, try %i \n", as);
         as = (as+1)%4;
         printStatus(as);
 	    ip = getIp ();
-        sleep(0.5f);
-    }while(strlen(ip) < 1);
-    printf("printing ip to oled: %s", ip);
+        sleep(1);
+    }while(strlen(ip) < 4);
+    printf("printing ip to oled: \"%s\" \n", ip);
 
 
     ////int oledInit(int iChannel, int iAddr, int bFlip, int bInvert)
@@ -67,7 +68,7 @@ int main(int argc, char *argv[])
 void printStatus(int as){
     as = as%4;
     oledFill(0); // fill with black
-	oledWriteString(0,0,"IP Display:",FONT_NORMAL);
+	oledWriteString(0,0,"IP Display: W",FONT_NORMAL);
     char c = '/';
     switch(as){
         case 0:
