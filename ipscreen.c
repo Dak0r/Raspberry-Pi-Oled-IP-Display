@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 
 
     char *ip;
-	//ip = getIp ();
+	ip = getIp ();
     printf("printing ip to oled: %s", ip);
 
     int i;
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 			oledSetPixel(i, 16+i, 1);
 			oledSetPixel(127-i, 16+i, 1);
 		}*/
-        oledWriteString(3,5, argv[1], FONT_SMALL);
+        oledWriteString(3,5, ip, FONT_SMALL);
 		printf("Press ENTER to quit\n");
 		getchar();
 		oledShutdown();
