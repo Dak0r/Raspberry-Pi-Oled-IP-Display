@@ -4,7 +4,10 @@ Display the local ip adress on an 0.96" I²C OLED Display
 
 # New Way:
 
-1. Run      sudo install_setup_script.sh
+1. Run      sudo ./setup_build_tools.sh
+1. Run      sudo ./compile_oled_library.sh
+1. Run      make
+1. Run      sudo ./install_setup_script.sh
 2. Add /etc/init.d/ipscreen.sh start to /etc/rc.local
 
 
