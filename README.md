@@ -5,10 +5,10 @@ Uses: https://github.com/bitbank2/oled_96.git
 
 # How to install:
 
-1. Run      sudo ./setup_build_tools.sh
-1. Run      sudo ./compile_oled_library.sh
-1. Run      make
-1. Run      sudo ./install_setup_script.sh
+1. Run      ```sudo ./setup_build_tools.sh```
+1. Run      ```sudo ./compile_oled_library.sh```
+1. Run      ```make```
+1. Run      ```sudo ./install_setup_script.sh```
 2. Add the line ```/etc/init.d/ipscreen.sh start``` to /etc/rc.local
 
 
