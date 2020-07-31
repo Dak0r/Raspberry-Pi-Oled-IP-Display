@@ -2,6 +2,10 @@
 
 Display the local ip adress on an 0.96" I²C OLED Display for headless installations.
 
+Default config is for these: 128*64 i²c Oled displays: https://amzn.to/3k93grg
+
+Edit ipscreen.c if you have a different one, see [oled_96](https://github.com/bitbank2/oled_96.git) library for config details.
+
 Uses: https://github.com/bitbank2/oled_96.git
 
 # How to install:
